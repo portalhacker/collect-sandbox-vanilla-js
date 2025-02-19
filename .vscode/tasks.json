@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "create example",
+      "type": "shell",
+      "command": "gh repo create collect-${input:exampleName} --public && pnpm create ${input:createFramework} examples/${input:exampleName} && git add . && git commit -m 'create examples/${input:exampleName}' && git subtree add --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main --squash && git subtree push --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main",
+      // "group": {
+      //   "kind": "build",
+      //   "isDefault": true
+      // },
+      // "problemMatcher": [
+      //   "$tsc"
+      // ],
+      // "detail": "Compiling..."
+    }
+  ],
+  "inputs": [
+    {
+      "id": "exampleName",
+      "type": "promptString",
+      "description": "Enter the name of the example"
+    },
+    {
+      "id": "createFramework",
+      "type": "promptString",
+      "description": "Enter the name of the create framework"
+    },
+  ]
+}

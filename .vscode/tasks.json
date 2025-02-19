@@ -2,16 +2,44 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "create repository",
+      "type": "shell",
+      "command": "gh repo create collect-sandbox-${input:exampleName} --public",
+      "problemMatcher": [],
+    },
+    {
       "label": "create example",
       "type": "shell",
-      // "command": "gh repo create collect-sandbox-${input:exampleName} --public && pnpm create ${input:createFramework} examples/${input:exampleName} && git add . && git commit -m 'create examples/${input:exampleName}' && git subtree add --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main --squash && git subtree push --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main",
-      "command": "gh repo create collect-sandbox-${input:exampleName} --public && pnpm create ${input:createFramework} examples/${input:exampleName} && git add . && git commit -m 'create examples/${input:exampleName}' && git subtree push --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main",
-      // "group": {
-      //   "kind": "build",
-      //   "isDefault": true
-      // },
+      "command": "pnpm create ${input:createFramework} examples/${input:exampleName}",
       "problemMatcher": [],
-      // "detail": "Compiling..."
+    },
+    {
+      "label": "add and commit new example",
+      "type": "shell",
+      "command": "git add . && git commit -m 'create examples/${input:exampleName}'",
+      "problemMatcher": [],
+    },
+    {
+      "label": "push new example to subtree remote",
+      "type": "shell",
+      "command": "git subtree push --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main",
+      "problemMatcher": [],
+    },
+    // {
+    //   "label": "create example",
+    //   "type": "shell",
+    //   "command": "gh repo create collect-sandbox-${input:exampleName} --public && pnpm create ${input:createFramework} examples/${input:exampleName} && git add . && git commit -m 'create examples/${input:exampleName}' && git subtree push --prefix=examples/${input:exampleName} https://github.com/portalhacker/collect-sandbox-${input:exampleName}.git main",
+    //   "problemMatcher": [],
+    // }
+    {
+      "label": "create example",
+      "dependsOn": [
+        "create repository",
+        "create example",
+        "add and commit new example",
+        "push new example to subtree remote"
+      ],
+      "problemMatcher": []
     }
   ],
   "inputs": [

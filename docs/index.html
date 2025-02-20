@@ -12,7 +12,7 @@
         event_name: 'page_view',
       });
     </script>
-    <script src="../index.js"></script>
+    <script src="../index.js" defer></script>
   </head>
   <body>
     <header>
@@ -23,11 +23,12 @@
             alt="Curved line reprensenting a vanilla pod and the text 'Vanillemétrie'"
           />
         </a>
-        <form method="get">
+        <form id="gtm-container-id-form" method="get">
           <label>
             <!-- <span>GTM container ID</span> -->
             <input
               type="text"
+              id="gtm-container-id-input"
               name="gtm-container-id"
               placeholder="GTM-123XYZ"
             />
@@ -36,17 +37,17 @@
         </form>
       </div>
       <nav id="categoriesNav">
-        <a href="../categories/culinary-essentials.html"
+        <a href="../categories/essentiels-culinaires.html"
           >Essentiels culinaires</a
         >
-        <a href="../categories/artisan-treats.html">Délices artisanaux</a>
-        <a href="../categories/beauty-and-wellness.html">Beauté et bien-être</a>
+        <a href="../categories/delices-artisanaux.html">Délices artisanaux</a>
+        <a href="../categories/beaute-et-bien-etre.html">Beauté et bien-être</a>
       </nav>
     </header>
     <h1>Documentation</h1>
     <ul>
       <li>
-        <a href="./links.html">Liens et boutons</a>
+        <a href="./liens.html">Liens et boutons</a>
       </li>
     </ul>
     <footer>

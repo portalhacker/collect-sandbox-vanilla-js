@@ -3,31 +3,78 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Vanillemétrie</title>
+    <link rel="stylesheet" href="index.css" />
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'page_load',
+        event_name: 'page_view',
+      });
+    </script>
+    <script src="./index.js"></script>
   </head>
   <body>
-    <h1>Home</h1>
-    <nav>
-      <a href="./collections/shirts.html">Shirts</a>
-      <a href="./collections/shoes.html">Shoes</a>
+    <header>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="160"
+        height="40"
+        viewBox="0 0 160 40"
+      >
+        <!-- Forme abstraite inspirée d'une gousse de vanille -->
+        <path
+          d="M16,20 C24,8 36,8 44,20 S64,32 72,20"
+          fill="none"
+          stroke="#333"
+          stroke-width="1.2"
+          stroke-linecap="round"
+        />
+        <!-- Texte de la marque -->
+        <text
+          x="80"
+          y="23"
+          font-family="Arial, sans-serif"
+          font-size="12"
+          fill="#333"
+        >
+          Vanillemétrie
+        </text>
+      </svg>
+      <form method="get">
+        <label>
+          <!-- <span>GTM container ID</span> -->
+          <input type="text" name="gtm-container-id" placeholder="GTM-123XYZ" />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </header>
+    <!-- <h1>Accueil</h1> -->
+    <nav id="categoriesNav">
+      <a href="./categories/culinary-essentials.html">Essentiels culinaires</a>
+      <a href="./categories/artisan-treats.html">Délices artisanaux</a>
+      <a href="./categories/beauty-and-wellness.html">Beauté et bien-être</a>
     </nav>
-    <ul>
-      <li>
-        <button>Button</button>
-      </li>
-      <li>
-        <a href="./link.html">Link</a>
-      </li>
-      <li>
-        <button>
-          <a href="./link-in-button.html">Link in button</a>
-        </button>
-      </li>
-      <li>
-        <a href="./button-in-link.html">
-          <button>Button in link</button>
-        </a>
-      </li>
-    </ul>
+    <footer>
+      <h2>Liens</h2>
+      <ul>
+        <li>
+          <button>Button</button>
+        </li>
+        <li>
+          <a href="./link.html">Link</a>
+        </li>
+        <li>
+          <button>
+            <a href="./link-in-button.html">Link in a button</a>
+          </button>
+        </li>
+        <li>
+          <a href="./button-in-link.html">
+            <button>Button in a link</button>
+          </a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>

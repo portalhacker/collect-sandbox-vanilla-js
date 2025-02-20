@@ -43,6 +43,9 @@ body {
 
 header {
   margin-bottom: 2rem;
+}
+
+#header-first-row {
   display: flex;
   justify-content: space-between;
 }

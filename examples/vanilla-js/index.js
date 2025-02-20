@@ -27,6 +27,11 @@ function initGTM(gtmContainerId) {
   })(window, document, 'script', 'dataLayer', gtmContainerId);
 }
 
+function updatetGTMContainerIDInputPlaceholder(gtmContainerId) {
+  const gtmContainerIdInput = document.querySelector('#gtm-container-id-input');
+  gtmContainerIdInput.placeholder = gtmContainerId;
+}
+
 const gtmContainerIdParam = new URLSearchParams(window.location.search).get(
   'gtm-container-id'
 );
@@ -36,4 +41,5 @@ if (gtmContainerIdParam) {
 const gtmContainerIdCookie = getGTMContainerIdCookie();
 if (gtmContainerIdCookie) {
   initGTM(gtmContainerIdCookie);
+  updatetGTMContainerIDInputPlaceholder(gtmContainerIdCookie);
 }

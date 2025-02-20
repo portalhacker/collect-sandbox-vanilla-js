@@ -29,6 +29,15 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -56,5 +65,40 @@ nav {
 }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+}
+
+.line-container {
+  margin-bottom: 1rem;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr; /* First column is twice narrower */
+  grid-template-rows: repeat(2, auto);
+  gap: 20px; /* Adjust the gap between grid items as needed */
+}
+
+.product-container {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }

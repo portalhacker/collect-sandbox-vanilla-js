@@ -43,7 +43,12 @@
         srcset="" />
       <h3>Extrait de Vanille Pure de Madagascar</h3>
       <span>18.99 $</span>
-      <button class="cta-primary" onclick="addToCart('mad-extrait-pur', 1, 18.99)">Ajouter au panier</button>
+      <button class="cta-primary" onclick="addToCart({
+          productId: 'mad-extrait-pur',
+          quantity: 1,
+          price: 18.99
+        })">Ajouter au
+        panier</button>
     </div>
     <footer>
       <h2>Liens utiles</h2>

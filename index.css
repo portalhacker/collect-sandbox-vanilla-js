@@ -84,6 +84,41 @@ h3 {
   margin-bottom: 1rem;
 }
 
+.cta-primary {
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+.cta-primary:hover {
+  background-color: #333333;
+  text-decoration-line: none;
+}
+
+.cta-secondary {
+  background-color: #eeeeee;
+  color: #000000;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border-color: #000000;
+}
+.cta-secondary:hover {
+  background-color: #dddddd;
+  text-decoration-line: none;
+  border-color: #000000;
+}
+
+#gtm-container-id-input {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 2px solid #000000;
+}
+#gtm-container-id-input:hover {
+  background-color: #eeeeee;
+}
+
 .line-container {
   margin-bottom: 1rem;
 }

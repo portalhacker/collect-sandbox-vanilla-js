@@ -1,5 +1,40 @@
 'use strict';
 
+function setCart({ items }) {
+  document.localStorage.setItem('cart', JSON.stringify(items));
+}
+function getCart() {
+  return JSON.parse(document.localStorage.getItem('cart'));
+}
+function clearCart() {
+  document.localStorage.removeItem('cart');
+}
+
+function addToCart({ productId, quantity, price }) {
+  const cart = getCart() || [];
+  const existingItem = cart.find((item) => item.productId === productId);
+  if (existingItem) {
+    existingItem.quantity += quantity;
+  } else {
+    cart.push({ productId, quantity, price });
+  }
+  setCart({ items: cart });
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'add_to_cart',
+    ecommerce: {
+      currencyCode: 'CAD',
+      items: [
+        {
+          item_id: productId,
+          price,
+          quantity,
+        },
+      ],
+    },
+  });
+}
+
 function storeGTMContainerId(gtmContainerId) {
   const gtmCookieMaxAgeDays = 180;
   document.cookie = `gtm-container-id=${gtmContainerId}; max-age=${
@@ -31,6 +66,10 @@ function updatetGTMContainerIDInputPlaceholder(gtmContainerId) {
   const gtmContainerIdInput = document.querySelector('#gtm-container-id-input');
   gtmContainerIdInput.placeholder = gtmContainerId;
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+  window.addToCart = addToCart;
+});
 
 const gtmContainerIdParam = new URLSearchParams(window.location.search).get(
   'gtm-container-id'

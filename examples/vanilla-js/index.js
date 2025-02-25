@@ -1,13 +1,13 @@
 'use strict';
 
 function setCart({ items }) {
-  document.localStorage.setItem('cart', JSON.stringify(items));
+  window.localStorage.setItem('cart', JSON.stringify(items));
 }
 function getCart() {
-  return JSON.parse(document.localStorage.getItem('cart'));
+  return JSON.parse(window.localStorage.getItem('cart'));
 }
 function clearCart() {
-  document.localStorage.removeItem('cart');
+  window.localStorage.removeItem('cart');
 }
 
 function addToCart({ productId, quantity, price }) {

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanillemétrie</title>
+  <link rel="stylesheet" href="../../index.css" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      event: 'page_load',
+      event_name: 'page_view',
+    });
+  </script>
+  <script src="../../index.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div id="header-first-row">
+      <a href="../../index.html">
+        <img src="../../logo.svg" alt="Curved line reprensenting a vanilla pod and the text 'Vanillemétrie'" />
+      </a>
+      <form id="gtm-container-id-form" method="get">
+        <label>
+          <input type="text" id="gtm-container-id-input" name="gtm-container-id" placeholder="GTM-123XYZ" />
+        </label>
+        <button type="submit" class="cta-secondary">Submit</button>
+      </form>
+    </div>
+    <nav id="categoriesNav">
+      <a href="../../categories/essentiels-culinaires">Essentiels culinaires</a>
+      <a href="../../categories/delices-artisanaux">Délices artisanaux</a>
+      <a href="../../categories/beaute-et-bien-etre">Beauté et bien-être</a>
+      <a href="../../cart">Panier</a>
+    </nav>
+  </header>
+  <h1>Extrait de Vanille Pure de Madagascar</h1>
+  <ul>
+    <div class="product-container">
+      <img src="https://images.unsplash.com/photo-1610487512810-b614ad747572?q=80&w=2928&auto=format&fit=crop" alt=""
+        srcset="" />
+      <h3>Extrait de Vanille Pure de Madagascar</h3>
+      <span>18.99 $</span>
+      <button class="cta-primary" onclick="addToCart({
+          productId: 'mad-extrait-pur',
+          quantity: 1,
+          price: 18.99
+        })">Ajouter au
+        panier</button>
+    </div>
+    <footer>
+      <h2>Liens utiles</h2>
+      <ul>
+        <li>
+          <a href="../../docs/index.html">Documentation</a>
+        </li>
+      </ul>
+    </footer>
+</body>
+
+</html>

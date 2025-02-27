@@ -9,8 +9,10 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      event: 'page_load',
-      event_name: 'page_view',
+      event: 'page_view',
+      page: {
+        content_group: 'product-list'
+      }
     });
   </script>
   <script src="../../../../index.js" defer></script>
@@ -41,14 +43,14 @@
     <div class="product-container">
       <a href="../../../../products/mad-extrait-pur">
         <img src="https://images.unsplash.com/photo-1610487512810-b614ad747572?q=80&w=2928&auto=format&fit=crop"
-          style="height: 10em;" />
+          style="height: 10rem;" />
         <h3>Extrait de Vanille Pure de Madagascar</h3>
         <span>18.99 $</span>
       </a>
     </div>
     <div class="product-container">
       <a href="./lines/products/mad-pate-bio.html">
-        <img src="../../../../images/vanilla-paste-no-bg.png" style="height: 10em;" />
+        <img src="../../../../images/vanilla-paste-no-bg.png" style="height: 10rem;" />
         <h3>Pâte de Gousse de Vanille Bio</h3>
         <span>25.99 $</span>
       </a>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanillemétrie</title>
+  <link rel="stylesheet" href="../index.css" />
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    dataLayer.push({
+      event: 'page_view',
+      page: {
+        content_group: 'transaction'
+      }
+    });
+  </script>
+  <script src="../index.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <div id="header-first-row">
+      <a href="../">
+        <img src="../logo.svg" alt="Curved line reprensenting a vanilla pod and the text 'Vanillemétrie'" />
+      </a>
+      <form id="gtm-container-id-form" method="get">
+        <label>
+          <input type="text" id="gtm-container-id-input" name="gtm-container-id" placeholder="GTM-123XYZ" />
+        </label>
+        <button type="submit" class="cta-secondary">Submit</button>
+      </form>
+    </div>
+    <nav id="categoriesNav">
+      <a href="../categories/essentiels-culinaires">Essentiels culinaires</a>
+      <!-- <a href="../categories/delices-artisanaux">Délices artisanaux</a>
+      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a> -->
+      <a href="../cart">Panier</a>
+  </header>
+  </nav>
+  <h1>Paiement</h1>
+  <table id="cart" style="width:100%">
+    <thead style="background-color:#f2f2f2">
+      <tr>
+        <th style="text-align: left;">Produit</th>
+        <th style="text-align: right;">Prix unitaire</th>
+        <th style="text-align: right;">Quantité</th>
+        <th style="text-align: right;">Prix total</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot style="background-color:#f2f2f2; font-weight: bold;">
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td style="text-align: right;">0.00 $</td>
+      </tr>
+    </tfoot>
+  </table>
+  <form action="../confirmation"
+    style="margin-top: 2rem; border: 1px solid #ddd; border-radius: 8px; padding: 20px; background-color: #f9f9f9; max-width: 400px; margin-left: auto; margin-right: auto;">
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Courriel
+        <input type="email" id="email" name="email" placeholder="test@example.com" value="test@example.com" required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Adresse
+        <input type="text" id="address" name="address" placeholder="123 rue Principale" value="123 rue Principale"
+          required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Ville
+        <input type="text" id="city" name="city" placeholder="Ville" value="Montréal" required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Code postal
+        <input type="text" id="zip" name="zip" placeholder="H2X 1Y6" value="H2X 1Y6" required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Numéro de carte de crédit
+        <input type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" maxlength="19" placeholder="5454 5454 5454 5454"
+          value="5454 5454 5454 5454" required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label style="display: block; margin-bottom: 5px; font-weight: bold;">
+        Date d'expiration
+        <input type="text" inputmode="numeric" pattern="[0-9]{2}/[0-9]{2}" placeholder="MM/AA" value="12/28" required
+          style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; margin-top: 5px;" />
+      </label>
+    </div>
+
+    <button type="submit"
+      style="background-color: #4361ee; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Payer</button>
+  </form>
+  <footer>
+    <h2>Liens utiles</h2>
+    <ul>
+      <li>
+        <a href="../docs">Documentation</a>
+      </li>
+    </ul>
+  </footer>
+</body>
+
+</html>

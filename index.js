@@ -69,6 +69,66 @@ function updatetGTMContainerIDInputPlaceholder(gtmContainerId) {
 
 window.addEventListener('DOMContentLoaded', () => {
   window.addToCart = addToCart;
+
+  if (
+    document.location.href.includes('/cart') ||
+    document.location.href.includes('/checkout')
+  ) {
+    const cart = getCart();
+    const cartTable = document.getElementById('cart');
+    const cartBody = cartTable.querySelector('tbody');
+    const cartFoot = cartTable.querySelector('tfoot');
+    const cartTotal = cartFoot.querySelector('td:last-child');
+    for (const product of cart) {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${product.productId}</td>
+        <td style="text-align: right;">${product.price} $</td>
+        <td style="text-align: right;">${product.quantity}</td>
+        <td style="text-align: right;">${(
+          product.price * product.quantity
+        ).toFixed(2)} $</td>
+      `;
+      cartBody.appendChild(row);
+    }
+    const total = cart.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    cartTotal.textContent = total.toFixed(2) + ' $';
+  } else if (
+    document.location.href.includes('/confirmation') &&
+    document.referrer.includes('/checkout')
+  ) {
+    const cart = getCart();
+    const purchaseAmount = cart.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    const orderId = Date.now().toString() + Math.random().toString();
+    document.getElementById('confirmation-container').innerHTML = `
+      <h1>✅ Thank you for your purchase!</h1>
+      <p>Your order ID is ${orderId}.</p>
+      <p>Your purchase amount is ${purchaseAmount.toFixed(2)} $.</p>
+    `;
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'purchase',
+      ecommerce: {
+        transaction_id: orderId,
+        value: purchaseAmount,
+        tax: 0,
+        shipping: 0,
+        currency: 'CAD',
+        items: cart.map((product) => ({
+          item_id: product.productId,
+          price: product.price,
+          quantity: product.quantity,
+        })),
+      },
+    });
+    clearCart();
+  }
 });
 
 const gtmContainerIdParam = new URLSearchParams(window.location.search).get(

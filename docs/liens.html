@@ -9,8 +9,10 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      event: 'page_load',
-      event_name: 'page_view',
+      event: 'page_view',
+      page: {
+        content_group: 'documentation'
+      }
     });
   </script>
   <script src="../index.js" defer></script>
@@ -31,8 +33,8 @@
     </div>
     <nav id="categoriesNav">
       <a href="../categories/essentiels-culinaires">Essentiels culinaires</a>
-      <a href="../categories/delices-artisanaux">Délices artisanaux</a>
-      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a>
+      <!-- <a href="../categories/delices-artisanaux">Délices artisanaux</a>
+      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a> -->
       <a href="../cart">Panier</a>
     </nav>
   </header>

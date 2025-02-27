@@ -9,8 +9,10 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     dataLayer.push({
-      event: 'page_load',
-      event_name: 'page_view',
+      event: 'page_view',
+      page: {
+        content_group: 'transaction'
+      }
     });
   </script>
   <script src="../index.js" defer></script>
@@ -31,12 +33,36 @@
     </div>
     <nav id="categoriesNav">
       <a href="../categories/essentiels-culinaires">Essentiels culinaires</a>
-      <a href="../categories/delices-artisanaux">Délices artisanaux</a>
-      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a>
+      <!-- <a href="../categories/delices-artisanaux">Délices artisanaux</a>
+      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a> -->
       <a href="../cart">Panier</a>
   </header>
   </nav>
   <h1>Panier</h1>
+  <table id="cart" style="width:100%">
+    <thead style="background-color:#f2f2f2">
+      <tr>
+        <th style="text-align: left;">Produit</th>
+        <th style="text-align: right;">Prix unitaire</th>
+        <th style="text-align: right;">Quantité</th>
+        <th style="text-align: right;">Prix total</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot style="background-color:#f2f2f2; font-weight: bold;">
+      <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+        <td style="text-align: right;">0.00 $</td>
+      </tr>
+    </tfoot>
+  </table>
+  <div style="margin-top: 1rem;">
+    <a href="../checkout" class="cta-primary" style="position: absolute; right: 1rem;">Commander</a>
+  </div>
+
   <footer>
     <h2>Liens utiles</h2>
     <ul>

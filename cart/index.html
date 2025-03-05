@@ -1,85 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panier - Vanillemétrie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../index.css" />
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'page_view',
+        page: {
+          content_group: 'transaction',
+        },
+      });
+    </script>
+    <script src="../index.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vanillemétrie</title>
-  <link rel="stylesheet" href="../index.css" />
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    dataLayer.push({
-      event: 'page_view',
-      page: {
-        content_group: 'transaction'
-      }
-    });
-  </script>
-  <script src="../index.js" defer></script>
-</head>
+  <body>
+    <header>
+      <div id="header-first-row">
+        <a href="../" class="logo-link">
+          <img
+            src="../logo.svg"
+            alt="Vanillemétrie - Curved line representing a vanilla pod"
+            width="180"
+            height="40"
+          />
+        </a>
+        <form id="gtm-container-id-form" method="get">
+          <label class="sr-only" for="gtm-container-id-input"
+            >GTM Container ID</label
+          >
+          <input
+            type="text"
+            id="gtm-container-id-input"
+            name="gtm-container-id"
+            placeholder="GTM-123XYZ"
+            aria-label="Enter GTM Container ID"
+          />
+          <button type="submit" class="cta-secondary">Submit</button>
+        </form>
+      </div>
+      <nav id="categoriesNav" aria-label="Main navigation">
+        <div class="nav-links">
+          <a href="../categories/essentiels-culinaires"
+            >Essentiels culinaires</a
+          >
+        </div>
+        <a href="../cart" class="cart-link" aria-label="View shopping cart">
+          <img src="../icons/cart.svg" alt="" width="24" height="24" />
+          <span class="sr-only">Panier</span>
+        </a>
+      </nav>
+    </header>
 
-<body>
-  <header>
-    <div id="header-first-row">
-      <a href="../">
-        <img src="../logo.svg" alt="Curved line reprensenting a vanilla pod and the text 'Vanillemétrie'" />
-      </a>
-      <form id="gtm-container-id-form" method="get">
-        <label>
-          <input type="text" id="gtm-container-id-input" name="gtm-container-id" placeholder="GTM-123XYZ" />
-        </label>
-        <button type="submit" class="cta-secondary">Submit</button>
-      </form>
-    </div>
-    <nav id="categoriesNav">
-      <a href="../categories/essentiels-culinaires">Essentiels culinaires</a>
-      <!-- <a href="../categories/delices-artisanaux">Délices artisanaux</a>
-      <a href="../categories/beaute-et-bien-etre">Beauté et bien-être</a> -->
-      <a href="../cart">
-        <img src="../icons/cart.svg" alt="Panier" />
-      </a>
-  </header>
-  </nav>
-  <section id="main-content">
-    <h1>Panier</h1>
-    <table id="cart" style="width:100%; max-width: 800px; margin: 0 auto;">
-      <thead style="background-color:#f2f2f2">
-        <tr>
-          <th style="text-align: left;">Produit</th>
-          <th style="text-align: right;">Prix unitaire</th>
-          <th style="text-align: right;">Quantité</th>
-          <th style="text-align: right;">Modifier</th>
-          <th style="text-align: right;">Prix total</th>
-          <th style="text-align: right;">Supprimer</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-      <tfoot style="background-color:#f2f2f2; font-weight: bold;">
-        <tr>
-          <td>Total</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td id="orderTotal" style="text-align: right;">0.00 $</td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
-    <div style="margin-top: 1rem;">
-      <a href="../checkout" class="cta-primary"
-        style="position: absolute; left: 50%; transform: translateX(-50%);">Commander</a>
-    </div>
-  </section>
-
-  <footer>
-    <h2>Liens utiles</h2>
-    <ul>
-      <li>
-        <a href="../docs">Documentation</a>
-      </li>
-    </ul>
-  </footer>
-</body>
-
+    <main id="main-content">
+      <h1>Panier</h1>
+      <table class="cart-table" id="cart">
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th style="text-align: right">Prix unitaire</th>
+            <th style="text-align: right">Quantité</th>
+            <th style="text-align: right">Modifier</th>
+            <th style="text-align: right">Prix total</th>
+            <th style="text-align: right">
+              <span class="sr-only">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td>Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="orderTotal" style="text-align: right">0.00 $</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div style="text-align: center; margin-top: 2rem">
+        <a href="../checkout" class="cta-primary">Commander</a>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h2>Liens utiles</h2>
+          <ul class="footer-links">
+            <li>
+              <a href="../docs">Documentation</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

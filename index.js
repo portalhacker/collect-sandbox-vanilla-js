@@ -107,27 +107,31 @@ window.addEventListener('DOMContentLoaded', () => {
         <td><a href="../products/${product.productId}">${
         product.productId
       }</a></td>
-        <td style="text-align: right;">${product.price} $</td>
-        <td style="text-align: right;">${product.quantity}</td>
-        <td style="text-align: right;">
-          <button onclick="addToCart({ productId: '${
-            product.productId
-          }', quantity: 1, price: ${product.price} }, undefined)">
+        <td>${product.price} $</td>
+        <td>${product.quantity}</td>
+        <td>
+          <button
+            class="quantity-btn"
+            onclick="addToCart({ productId: '${
+              product.productId
+            }', quantity: 1, price: ${product.price} }, undefined)">
             <img src="../icons/circle-plus.svg" alt="Add" width="20" height="20">
           </button>
-          <button onclick="removeFromCart({ productId: '${
-            product.productId
-          }', quantity: 1 })">
+          <button
+            class="quantity-btn"
+            onclick="removeFromCart({ productId: '${
+              product.productId
+            }', quantity: 1 })">
             <img src="../icons/circle-minus.svg" alt="Remove" width="20" height="20">
           </button>
         </td>
-        <td style="text-align: right;">${(
-          product.price * product.quantity
-        ).toFixed(2)} $</td>
-        <td style="text-align: right;">
-          <button onclick="removeFromCart({ productId: '${
-            product.productId
-          }', quantity: ${product.quantity} })">
+        <td>${(product.price * product.quantity).toFixed(2)} $</td>
+        <td>
+          <button
+            class="delete-btn"
+            onclick="removeFromCart({ productId: '${
+              product.productId
+            }', quantity: ${product.quantity} })">
             <img src="../icons/trash.svg" alt="Remove" width="20" height="20">
           </button>
         </td>

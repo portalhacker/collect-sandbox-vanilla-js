@@ -11,9 +11,11 @@ function clearCart() {
 }
 
 function addToCart({ productId, quantity, price }, element) {
-  element.disabled = true;
-  element.style.cursor = 'not-allowed';
-  element.textContent = 'Ajout...';
+  if (element) {
+    element.disabled = true;
+    element.style.cursor = 'not-allowed';
+    element.textContent = 'Ajout...';
+  }
   const cart = getCart() || [];
   const existingItem = cart.find((item) => item.productId === productId);
   if (existingItem) {
@@ -36,11 +38,26 @@ function addToCart({ productId, quantity, price }, element) {
       ],
     },
   });
-  setTimeout(() => {
-    element.disabled = false;
-    element.style.cursor = 'pointer';
-    element.textContent = 'Ajouter au panier';
-  }, 1000);
+  if (element) {
+    setTimeout(() => {
+      element.disabled = false;
+      element.style.cursor = 'pointer';
+      element.textContent = 'Ajouter au panier';
+    }, 1000);
+  }
+}
+
+function removeFromCart({ productId, quantity }) {
+  const cart = getCart();
+  const existingItem = cart.find((item) => item.productId === productId);
+  if (existingItem) {
+    if (existingItem.quantity > quantity) {
+      existingItem.quantity -= quantity;
+    } else {
+      cart.splice(cart.indexOf(existingItem), 1);
+    }
+  }
+  setCart({ items: cart });
 }
 
 function storeGTMContainerId(gtmContainerId) {
@@ -86,16 +103,37 @@ window.addEventListener('DOMContentLoaded', () => {
     const cartTable = document.getElementById('cart');
     const cartBody = cartTable.querySelector('tbody');
     const cartFoot = cartTable.querySelector('tfoot');
-    const cartTotal = cartFoot.querySelector('td:last-child');
+    const cartTotal = cartFoot.querySelector('#orderTotal');
     for (const product of cart) {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td>${product.productId}</td>
+        <td><a href="../products/${product.productId}">${
+        product.productId
+      }</a></td>
         <td style="text-align: right;">${product.price} $</td>
         <td style="text-align: right;">${product.quantity}</td>
+        <td style="text-align: right;">
+          <button onclick="addToCart({ productId: '${
+            product.productId
+          }', quantity: 1, price: ${product.price} }, undefined)">
+            <img src="../icons/circle-plus.svg" alt="Add" width="20" height="20">
+          </button>
+          <button onclick="removeFromCart({ productId: '${
+            product.productId
+          }', quantity: 1 })">
+            <img src="../icons/circle-minus.svg" alt="Remove" width="20" height="20">
+          </button>
+        </td>
         <td style="text-align: right;">${(
           product.price * product.quantity
         ).toFixed(2)} $</td>
+        <td style="text-align: right;">
+          <button onclick="removeFromCart({ productId: '${
+            product.productId
+          }', quantity: ${product.quantity} })">
+            <img src="../icons/trash.svg" alt="Remove" width="20" height="20">
+          </button>
+        </td>
       `;
       cartBody.appendChild(row);
     }

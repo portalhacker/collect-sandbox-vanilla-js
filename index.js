@@ -10,7 +10,10 @@ function clearCart() {
   window.localStorage.removeItem('cart');
 }
 
-function addToCart({ productId, quantity, price }) {
+function addToCart({ productId, quantity, price }, element) {
+  element.disabled = true;
+  element.style.cursor = 'not-allowed';
+  element.textContent = 'Ajout...';
   const cart = getCart() || [];
   const existingItem = cart.find((item) => item.productId === productId);
   if (existingItem) {
@@ -33,6 +36,11 @@ function addToCart({ productId, quantity, price }) {
       ],
     },
   });
+  setTimeout(() => {
+    element.disabled = false;
+    element.style.cursor = 'pointer';
+    element.textContent = 'Ajouter au panier';
+  }, 1000);
 }
 
 function storeGTMContainerId(gtmContainerId) {

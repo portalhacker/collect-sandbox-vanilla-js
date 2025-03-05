@@ -38,13 +38,9 @@ function addToCart({ productId, quantity, price }, element) {
       ],
     },
   });
-  if (element) {
-    setTimeout(() => {
-      element.disabled = false;
-      element.style.cursor = 'pointer';
-      element.textContent = 'Ajouter au panier';
-    }, 1000);
-  }
+  setTimeout(() => {
+    document.location.reload();
+  }, 600);
 }
 
 function removeFromCart({ productId, quantity }) {
@@ -58,6 +54,7 @@ function removeFromCart({ productId, quantity }) {
     }
   }
   setCart({ items: cart });
+  document.location.reload();
 }
 
 function storeGTMContainerId(gtmContainerId) {

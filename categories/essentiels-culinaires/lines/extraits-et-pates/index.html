@@ -47,9 +47,36 @@
   </header>
   <section id="main-content">
     <h1>Extraits et pâtes</h1>
+    <script>
+      function dlSelectItem({ item_id, item_category, item_category2, price, index }) {
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+          event: 'select_item',
+          ecommerce: {
+            item_list_id: 'category:essentiels-culinaires',
+            currency: 'USD',
+            items: [
+              {
+                item_id,
+                item_category,
+                item_category2,
+                price,
+                index
+              }
+            ]
+          }
+        });
+      }
+    </script>
     <div class="products-container">
       <div class="product-container">
-        <a href="../../../../products/mad-extrait-pur">
+        <a href="../../../../products/mad-extrait-pur" onclick="dlSelectItem({
+            item_id: 'mad-extrait-pur',
+            item_category: 'Essentiels culinaires',
+            item_category2: 'Extraits et pâtes',
+            price: 18.99,
+            index: 0
+          })">
           <img src="https://images.unsplash.com/photo-1610487512810-b614ad747572?q=80&w=2928&auto=format&fit=crop"
             style="height: 10rem;" />
           <h3>Extrait de Vanille Pure de Madagascar</h3>
@@ -57,13 +84,45 @@
         </a>
       </div>
       <div class="product-container">
-        <a href="./lines/products/mad-pate-bio.html">
+        <a href="../../../../products/mad-pate-bio" onclick="dlSelectItem({
+            item_id: 'mad-pate-bio',
+            item_category: 'Essentiels culinaires',
+            item_category2: 'Extraits et pâtes',
+            price: 25.99,
+            index: 1
+          })">
           <img src="../../../../images/vanilla-paste-no-bg.png" style="height: 10rem;" />
           <h3>Pâte de Gousse de Vanille Bio</h3>
           <span>25.99 $</span>
         </a>
       </div>
     </div>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'view_item_list',
+        ecommerce: {
+          item_list_id: 'line:extraits-et-pates',
+          currency: 'USD',
+          items: [
+            {
+              item_id: 'mad-extrait-pur',
+              item_category: 'Essentiels culinaires',
+              item_category2: 'Extraits et pâtes',
+              price: 18.99,
+              index: 0
+            },
+            {
+              item_id: 'mad-pate-bio',
+              item_category: 'Essentiels culinaires',
+              item_category2: 'Extraits et pâtes',
+              price: 25.99,
+              index: 1
+            }
+          ]
+        }
+      });
+    </script>
   </section>
   <footer>
     <div class="footer-content">

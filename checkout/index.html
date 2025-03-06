@@ -122,7 +122,31 @@
           value="12/28" required class="form-input" />
       </div>
 
-      <button type="submit" class="checkout-submit">Payer</button>
+      <script>
+        function dlAddPaymentInfo({ payementMethod }) {
+          const cart = window.getCart();
+          window.dataLayer = window.dataLayer || [];
+          dataLayer.push({
+            event: 'add_payment_info',
+            ecommerce: {
+              currency: 'CAD',
+              value: cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+              paymentMethod: payementMethod,
+              shipping: 0,
+              tax: 0,
+              items: cart.map(item => ({
+                id: item.productId,
+                price: item.price,
+                quantity: item.quantity,
+              })),
+            },
+          });
+        }
+      </script>
+
+      <button type="submit" class="checkout-submit" onclick="dlAddPaymentInfo({ payementMethod: 'credit_card' })">
+        Payer
+      </button>
     </form>
   </main>
 

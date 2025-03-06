@@ -54,6 +54,20 @@ function removeFromCart({ productId, quantity }) {
     }
   }
   setCart({ items: cart });
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'remove_from_cart',
+    ecommerce: {
+      currencyCode: 'CAD',
+      items: [
+        {
+          item_id: productId,
+          price: existingItem.price,
+          quantity,
+        },
+      ],
+    },
+  });
   document.location.reload();
 }
 
@@ -90,6 +104,7 @@ function updatetGTMContainerIDInputPlaceholder(gtmContainerId) {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  window.getCart = getCart;
   window.addToCart = addToCart;
 
   if (
@@ -143,6 +158,21 @@ window.addEventListener('DOMContentLoaded', () => {
       0
     );
     cartTotal.textContent = total.toFixed(2) + ' $';
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: document.location.href.includes('/cart')
+        ? 'view_cart'
+        : 'begin_checkout',
+      ecommerce: {
+        value: total,
+        currencyCode: 'CAD',
+        items: cart.map((product) => ({
+          item_id: product.productId,
+          price: product.price,
+          quantity: product.quantity,
+        })),
+      },
+    });
   } else if (
     document.location.href.includes('/confirmation') &&
     document.referrer.includes('/checkout')

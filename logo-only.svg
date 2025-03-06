@@ -1,0 +1,15 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="90"
+  height="40"
+  viewBox="0 0 16svg0 90"
+>
+  <!-- Forme abstraite inspirée d'une gousse de vanille -->
+  <path
+    d="M16,20 C24,8 36,8 44,20 S64,32 72,20"
+    fill="none"
+    stroke="#333"
+    stroke-width="1.2"
+    stroke-linecap="round"
+  />
+</svg>

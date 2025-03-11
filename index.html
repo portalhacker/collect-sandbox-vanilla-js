@@ -61,6 +61,58 @@
           Magasiner
         </a>
       </div>
+      <div class="newsletter-container">
+        <form action="./" method="post">
+          <label>
+            <h2>Abonnez-vous à notre infolettre</h2>
+            <input type="email" id="newsletter-email-input" name="newsletter-email" placeholder="Votre adresse courriel"
+              onfocus="handleFocus(event)" />
+            <script>
+              function handleFocus(event) {
+                window.dataLayer.push({
+                  event: "form_start",
+                  interaction: {
+                    form_name: "newsletter-footer"
+                  }
+                })
+                event.target.onfocus = null;
+              }
+            </script>
+          </label>
+          <script>
+            function handleSubscribe(event) {
+              event.preventDefault();
+              const emailInput = document.getElementById('newsletter-email-input');
+              const emailValue = emailInput.value;
+              if (!emailValue) {
+                alert('Veuillez entrer une adresse courriel.');
+                return;
+              }
+              if (!emailValue.includes('@')) {
+                alert('Veuillez entrer une adresse courriel valide.');
+                return;
+              }
+              const subscribedMessage = document.querySelector('.newsletter-container span');
+              subscribedMessage.style.display = 'block';
+              emailInput.value = '';
+              setTimeout(() => {
+                subscribedMessage.style.display = 'none';
+              }, 3000);
+              window.dataLayer.push({
+                event: 'generate_lead',
+                user: {
+                  email: emailValue,
+                },
+                interaction: {
+                  lead_source: 'newsletter',
+                },
+              });
+            };
+          </script>
+          <button type="submit" onclick="handleSubscribe(event)" class="cta-primary">S'abonner</button>
+          <span style="background-color: green; color: white; display: none;">Subscribed! 🎉</span>
+        </form>
+      </div>
     </div>
   </main>
 

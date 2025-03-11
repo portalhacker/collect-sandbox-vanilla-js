@@ -132,6 +132,7 @@ h1 {
 h2 {
   font-size: 2rem;
   font-weight: 600;
+  margin-top: 2.5rem;
   margin-bottom: 1.25rem;
 }
 
@@ -179,7 +180,8 @@ h3 {
   gap: 0.5rem;
 }
 
-#gtm-container-id-input {
+#gtm-container-id-input,
+#newsletter-email-input {
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
   border: 2px solid #e2e8f0;
@@ -187,7 +189,8 @@ h3 {
   font-size: 1rem;
 }
 
-#gtm-container-id-input:focus {
+#gtm-container-id-input:focus,
+#newsletter-email-input:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(107, 77, 230, 0.1);

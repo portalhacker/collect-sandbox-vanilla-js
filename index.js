@@ -28,7 +28,8 @@ function addToCart({ productId, quantity, price }, element) {
   window.dataLayer.push({
     event: 'add_to_cart',
     ecommerce: {
-      currencyCode: 'CAD',
+      currency: 'CAD',
+      value: price * quantity,
       items: [
         {
           item_id: productId,
@@ -58,7 +59,8 @@ function removeFromCart({ productId, quantity }) {
   window.dataLayer.push({
     event: 'remove_from_cart',
     ecommerce: {
-      currencyCode: 'CAD',
+      currency: 'CAD',
+      value: existingItem.price * quantity,
       items: [
         {
           item_id: productId,
@@ -73,9 +75,8 @@ function removeFromCart({ productId, quantity }) {
 
 function storeGTMContainerId(gtmContainerId) {
   const gtmCookieMaxAgeDays = 180;
-  document.cookie = `gtm-container-id=${gtmContainerId}; max-age=${
-    gtmCookieMaxAgeDays * 24 * 60 * 60
-  }; path=/`;
+  document.cookie = `gtm-container-id=${gtmContainerId}; max-age=${gtmCookieMaxAgeDays * 24 * 60 * 60
+    }; path=/`;
 }
 
 function getGTMContainerIdCookie() {
@@ -119,24 +120,21 @@ window.addEventListener('DOMContentLoaded', () => {
     for (const product of cart) {
       const row = document.createElement('tr');
       row.innerHTML = `
-        <td><a href="../products/${product.productId}">${
-        product.productId
-      }</a></td>
+        <td><a href="../products/${product.productId}">${product.productId
+        }</a></td>
         <td>${product.price} $</td>
         <td>${product.quantity}</td>
         <td>
           <button
             class="quantity-btn"
-            onclick="addToCart({ productId: '${
-              product.productId
-            }', quantity: 1, price: ${product.price} }, undefined)">
+            onclick="addToCart({ productId: '${product.productId
+        }', quantity: 1, price: ${product.price} }, undefined)">
             <img src="../icons/circle-plus.svg" alt="Add" width="20" height="20">
           </button>
           <button
             class="quantity-btn"
-            onclick="removeFromCart({ productId: '${
-              product.productId
-            }', quantity: 1 })">
+            onclick="removeFromCart({ productId: '${product.productId
+        }', quantity: 1 })">
             <img src="../icons/circle-minus.svg" alt="Remove" width="20" height="20">
           </button>
         </td>
@@ -144,9 +142,8 @@ window.addEventListener('DOMContentLoaded', () => {
         <td>
           <button
             class="delete-btn"
-            onclick="removeFromCart({ productId: '${
-              product.productId
-            }', quantity: ${product.quantity} })">
+            onclick="removeFromCart({ productId: '${product.productId
+        }', quantity: ${product.quantity} })">
             <img src="../icons/trash.svg" alt="Remove" width="20" height="20">
           </button>
         </td>
@@ -165,7 +162,7 @@ window.addEventListener('DOMContentLoaded', () => {
         : 'begin_checkout',
       ecommerce: {
         value: total,
-        currencyCode: 'CAD',
+        currency: 'CAD',
         items: cart.map((product) => ({
           item_id: product.productId,
           price: product.price,
